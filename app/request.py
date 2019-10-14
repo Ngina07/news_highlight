@@ -29,22 +29,22 @@ def get_news(category):
             news_results = process_results(news_results_list)
     return news_results
 
-# def process_results(news_list):
-#     '''
-#     Function  that processes the news result and transform them to a list of Objects
-#     '''
+def process_results(news_list):
+    '''
+    Function  that processes the news result and transform them to a list of Objects
+    '''
 
-#     news_results = []
-#     for news_item in news_list:
-#         id = news_item.get('id')
-#         name= news_item.get('name')
-#         description = news_item.get('description')
-#         url = news_item.get('url_path')
-#         category = news_item.get('category')
-#         country = news_item.get('country')
+    news_results = []
+    for news_item in news_list:
+        id = news_item.get('id')
+        name= news_item.get('name')
+        description = news_item.get('description')
+        url = news_item.get('url_path')
+        category = news_item.get('category')
+        country = news_item.get('country')
 
-#         if url:
-#             news_object = news(id,name,description,url,category,country)
-#             news_results.append(news_object)
+        if url:
+            news_object = news(id,name,description,url,category,country)
+            news_results.append(news_object)
 
-#     return news_results
+    return news_results
