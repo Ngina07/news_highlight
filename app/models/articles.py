@@ -1,6 +1,6 @@
 class Articles:  #Class for articles
     '''
-    Articles class to define news objects
+    Articles class to define articles objects
     '''
     def __init__(self,id,name, description,url, category, language):
         self.id =id
