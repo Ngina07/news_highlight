@@ -1,12 +1,19 @@
 <!-- <h1>A bunch of stuff to prove flask is working</h1> -->
 {% extends 'base.html'%}
-{% import "macros.html" as macro%}
+{% import "macros.html" as macro %}
 
 <!-- Content block -->
 {% block content %}
 <!-- Popular news section  -->
-<h3> News!</h3>
-<ul>
-    {{macro.displayNewsList(name_news)}}
-</ul>
+
+<div class="container-fluid">
+    <h2 class="text text-center font-weight-bold">General News</h2>
+    {{ macro.displayNewsList(general) }}
+
+    <h2 class="text text-center font-weight-bold">Business  News</h2>
+    {{ macro.displayNewsList(business) }}
+
+    <h2 class="text text-center font-weight-bold">Sport  News</h2>
+    {{ macro.displayNewsList(sports) }}
+</div>
 {% endblock%}
