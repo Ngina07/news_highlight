@@ -1,45 +1,45 @@
-{% macro displayNewsList(news_results) %}
-<div class="container">
-    {% for news in news_results%}
-    <div class="card">
-        <div class="card-header">
-            {{news.name}}
-        </div>
-        <div class="card-body">
-            <p> {{news.description}}</p>
-            
-        </div>
-        <div class="card-footer">
-            <a href="{{news.url}}"><button class="btn btn-outline-success">Visit</button></a>
-            <a href="/articles/{{news.id}}"><button class="btn btn-outline-success">Source</button></a>
-            <a href=""><button class="btn btn-outline-success">Visit</button></a>
-        </div>
-    </div>
-    {% endfor %}
-</div>
-{% endmacro %}
-
-{% macro display_articles(article_resp)%}
-<div class="container-fluid">
-    <div class="card">
-        {%for art in article_resp %}
-        <div class="card">
-            <div class="card-header arti">
-                <!-- <h4>{{art.title}}</h4> -->
+    {% macro displayNewsList(news_results) %}
+    <div class="container" style="background-color:darkblue" style="min-width: 1000 px">
+        {% for news in news_results%} 
+        <div class="card" style="margin-bottom: 15px">
+            <div class="card-header">
+                {{news.name}}
             </div>
             <div class="card-body">
-                <img src="{{art.urlToImage}}" alt="" class="card-img">
-            <hr>
-            <p class="descrip">
-                {{art.description}}
-            </p>
-            <p>Posted: {{art.publishedAt | truncate(20)}}</p>
-           </div>
-           <div class="card-footer">
-               <a href="{{art.url}}"><button class="btn btn-sm btn-outline-success">Read More</button></a>
-           </div>
+                <p> {{news.description}}</p>
+
+            </div>
+            <div class="card-footer">
+                <a href="{{news.url}}"><button class="btn btn-outline-success">Visit</button></a>
+                <a href="/articles/{{news.id}}"><button class="btn btn-outline-success">Source</button></a>
+                <a href=""><button class="btn btn-outline-success">Visit</button></a>
+            </div>
         </div>
-        {%endfor%}
+        {% endfor %}
     </div>
-</div>
-{% endmacro%}
+    {% endmacro %}
+
+    {% macro display_articles(article_resp)%}
+    <div class="container-fluid">
+        <div class="card">
+            {%for art in article_resp %}
+            <div class="card">
+                <div class="card-header arti">
+                    <!-- <h4>{{art.title}}</h4> -->
+                </div>
+                <div class="card-body">
+                    <img src="{{art.urlToImage}}" alt="" class="card-img">
+                    <hr>
+                    <p class="descrip">
+                        {{art.description}}
+                    </p>
+                    <p>Posted: {{art.publishedAt | truncate(20)}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{{art.url}}"><button class="btn btn-sm btn-outline-success">Read More</button></a>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </div>
+    {% endmacro%}
