@@ -16,9 +16,18 @@ See the image, description and the time a news article was created.
 Click on an article and read the full article on the source website.
 
 ## Running the application
+* Open link on web browser
+
+## Set-up and installations
+> Clone or download the repository
+> Create a virtual environment
+> Edit the start.sh file with your api Key from the news.org website
+>Run chmod a+x start.py 
+>Run ./start.py
+>Access your application through the local server link e.g. http://127.0.0.1:5001
 
 ## Known bugs
-There are no known bugs
+Links on navbar are not functional
 
 ## Support and contact details
 In the event any issue arises while using the webpage feel free to contact me through my email address, phillis.njoroge@strathmore.edu. Any and all contributions to the code are highly encouraged and appreciated
