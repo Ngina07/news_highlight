@@ -89,35 +89,35 @@ def process_new_article(article_list):
     return article_result
 
 
-# def article_source(source):
-#     sources_url = 'https://newsapi.org/v2/everything?sources={}&apiKey={}'.format(source,apikey)
+def article_source(source):
+    sources_url = 'https://newsapi.org/v2/everything?sources={}&apiKey={}'.format(source,apikey)
 
-#     with urllib.request.urlopen(sources_url) as url:
-#         art_data = url.read()
-#         response = json.loads(art_data)
+    with urllib.request.urlopen(sources_url) as url:
+        art_data = url.read()
+        response = json.loads(art_data)
 
-#         source_article =  None
+        source_article =  None
 
-#         if response['articles']:
-#             source_article_list = response['articles']
-#             source_article = process_article_source(source_article_list)
+        if response['articles']:
+            source_article_list = response['articles']
+            source_article = process_article_source(source_article_list)
 
-#     return source_article
+    return source_article
 
-# def process_article_source(article_list):
-#     article_source = []
+def process_article_source(article_list):
+    article_source = []
 
-#     for one_art in article_list:
-#         source = one_art.get('source')
-#         author = one_art.get('author')
-#         title = one_art.get('title')
-#         description = one_art.get('description')
-#         url = one_art.get('url')
-#         urlToImage = one_art.get('urlToImage')
-#         publishedAt = one_art.get('publishedAt')
+    for one_art in article_list:
+        source = one_art.get('source')
+        author = one_art.get('author')
+        title = one_art.get('title')
+        description = one_art.get('description')
+        url = one_art.get('url')
+        urlToImage = one_art.get('urlToImage')
+        publishedAt = one_art.get('publishedAt')
 
 
-#         article_object = Articles(source,author,title,description,url,urlToImage,publishedAt)
-#         article_source.append(article_object)
+        article_object = Articles(source,author,title,description,url,urlToImage,publishedAt)
+        article_source.append(article_object)
 
-#     return article_source
+    return article_source
