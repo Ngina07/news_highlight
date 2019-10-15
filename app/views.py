@@ -19,6 +19,8 @@ def index():
     # title = 'Welcome to the Best News Site in the region'
     return render_template('index.html',general = gene_news,business =business_news,sports=sport_news )
 
+#Displays news sources to home page
+
 @app.route('/articles/<id>')
 def sourceArticle(id):
     '''
