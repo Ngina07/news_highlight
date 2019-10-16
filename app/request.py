@@ -1,19 +1,27 @@
-from app import app
 import urllib.request
 import json
-from .models import news
-from .models import article
+from .models import News
+from .models import Articles
 
-News = news.News
-Article = article.Articles
+# News = news.News
+# Article = article.Articles
 
-#Getting apikey
 
-apikey = app.config['NEWS_API_KEY']
+# Getting api key
+apikey = None
+# Getting the movie base url
+base_url = None
+article_url = None
 
+def configure_request(app):
+    global apikey,base_url,article_url
+    apikey = app.config['NEWS_API_KEY']
+    base_url = app.config['NEWS_API_BASE_URL']
+    article_url = app.config ['NEWS_ARTICLE_API_URL']
+# apikey = app.config['NEWS_API_KEY']
 # Getting the news base url
-base_url = app.config["NEWS_API_BASE_URL"]
-article_url = app.config ["NEWS_ARTICLE_API_URL"]
+# base_url = app.config["NEWS_API_BASE_URL"]
+# article_url = app.config ["NEWS_ARTICLE_API_URL"]
 
 
 def get_news(category):
@@ -56,7 +64,7 @@ def process_results(news_list):
 def get_articles(article):
 
     get_article_url = article_url.format(article,apikey)
-    # print(get_article_url)
+    print(get_article_url)
 
     with urllib.request.urlopen(get_article_url) as url:
         article_data = url.read()
@@ -83,14 +91,14 @@ def process_new_article(article_list):
         urlToImage = article_item.get('urlToImage')
         publishedAt = article_item.get('publishedAt')
 
-        new_article = article.Articles(title,author,source,name,description,url,urlToImage,publishedAt)
+        new_article = Articles(title,author,source,name,description,url,urlToImage,publishedAt)
         article_result.append(new_article)
         
     return article_result
 
 
 def article_source(source):
-    sources_url = 'https://newsapi.org/v2/everything?sources={}&apiKey={}'.format(source,apikey)
+    sources_url =article_url.format(source,apikey)
 
     with urllib.request.urlopen(sources_url) as url:
         art_data = url.read()
@@ -109,6 +117,7 @@ def process_article_source(article_list):
 
     for one_art in article_list:
         source = one_art.get('source')
+        name = one_art.get('name')
         author = one_art.get('author')
         title = one_art.get('title')
         description = one_art.get('description')
@@ -117,7 +126,7 @@ def process_article_source(article_list):
         publishedAt = one_art.get('publishedAt')
 
 
-        article_object = Articles(source,author,title,description,url,urlToImage,publishedAt)
+        article_object = Articles(source,name,author,title,description,url,urlToImage,publishedAt)
         article_source.append(article_object)
 
     return article_source

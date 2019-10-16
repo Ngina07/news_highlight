@@ -1,10 +1,11 @@
-from flask import render_template
-from app import app
-from .request import get_news
-from .request import get_articles
+from flask import render_template,request,redirect,url_for
+from . import main
+from ..request import get_news
+from ..request import get_articles
+
 
 # Views
-@app.route('/')
+@main.route('/')
 def index():
 
     '''
@@ -21,7 +22,7 @@ def index():
 
 #Displays news sources to home page
 
-@app.route('/articles/<id>')
+@main.route('/articles/<id>')
 def sourceArticle(id):
     '''
     Views thats renders news sources to the home page
