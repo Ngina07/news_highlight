@@ -16,7 +16,8 @@ See the image, description and the time a news article was created.
 Click on an article and read the full article on the source website.
 
 ## Running the application
-* Open link on web browser
+* Open link on web browser.Live link ---> https://news-highlight-2019.herokuapp.com/
+
 
 ## Set-up and installations
 > Clone or download the repository
